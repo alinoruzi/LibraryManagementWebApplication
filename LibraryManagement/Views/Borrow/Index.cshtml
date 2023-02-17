@@ -1,0 +1,35 @@
+﻿@model BorrowModel
+@{
+    ViewData["Title"] = "ثبت امانت";
+}
+
+<div class="mt-5 col-5">
+    <div class="flex-row">
+        <p>شما درحال درخواست ثبت امانت برای کتاب "@Model.Book.Title" می باشید.</p>
+        <span class="badge bg-success">وضعیت فعلی امانت کتاب: "@(Model.Book.Borrower is null ? "موجود در مخزن" : "در امانت")" میباشد</span>
+    </div>
+    
+    <form asp-controller="Borrow" asp-action="Index" method="post">
+        <div class="mb-3 mt-3">
+            <lable class="form-label" for="bookId">شناسه کتاب:</lable>
+            <input type="text" readonly class="form-control" name="bookId" value="@Model.Book.Id" />
+        </div>
+
+        <div class="mb-3">
+            <lable class="form-label" for="memberId">امانت گیرنده:</lable>
+            <select name="memberId" class="form-select">
+                @foreach (var item in Model.Members)
+                {
+                    <option value="@item.Id">@(item.FirstName + " " + item.LastName)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3 mt-5">
+            <div class="d-grid gap-2">
+                <input type="submit" class="btn btn-lg btn-dark" value="ثبت امانت" />
+                <input type="button" class="btn btn-lg btn-danger" asp-action="Index" asp-controller="Books" value="بازگشت" />
+            </div>
+        </div>
+    </form>
+</div>

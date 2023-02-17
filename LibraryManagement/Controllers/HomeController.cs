@@ -19,7 +19,8 @@ namespace LibraryManagement.Controllers
             IndexModel indexModel = new IndexModel();
             indexModel.CountOfBooks = BookRepository.Books.Count;
             indexModel.CountOfMembers = MemberRepository.Members.Count;
-            indexModel.LastBorrowing = BookRepository.Books.MaxBy(x=>x.BorrowDateTime).BorrowDateTime;
+            indexModel.CountOfBorrowedBook = BookRepository.Books.Count(x => x.Borrower != null);
+            indexModel.LastBorrowing = (BookRepository.Books.Count!=0 ? BookRepository.Books.MaxBy(x=>x.BorrowDateTime).BorrowDateTime : DateTime.Now);
 
             return View(indexModel);
         }

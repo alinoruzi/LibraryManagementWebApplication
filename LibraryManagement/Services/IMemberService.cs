@@ -4,10 +4,9 @@ namespace LibraryManagement.Services
 {
     public interface IMemberService
     {
-        public void Add(Book book);
-        public void Remove(Book book);
-        public Book Get(int id);
-        public void Update(Book book);
+        public void Add(Member member);
+        public Member Get(int id);
+        public void Update(Member member);
         public void Delete(int id);
     }
 }

@@ -7,10 +7,11 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
     <title>@ViewData["Title"] - سیستم مدیریت کتابخانه</title>
-    <link href="~/assets/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="~/assets/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet"/>
+    <link href="~/assets/fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="~/assets/font/fonts.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="~/assets/css/style.css">
-    <link href="~/assets/css/dashboard.rtl.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/style.css"/>
+    <link href="~/assets/css/dashboard.rtl.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -42,6 +43,12 @@
                         <a class="nav-link" asp-controller="Books" asp-action="Index">
                             <span data-feather="file" class="align-text-bottom"></span>
                             فهرست کتاب ها
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Books" asp-action="Borrowed">
+                            <span data-feather="file" class="align-text-bottom"></span>
+                            فهرست کتب در امانت
                         </a>
                     </li>
                 </ul>

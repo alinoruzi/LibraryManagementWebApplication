@@ -8,6 +8,5 @@
         public string NationalCode { get; set; }
         public string Email { get; set; }
         public DateTime RegistrationDateTime { get; set; }
-        public DateTime ExpireDateTime { get; set; }
     }
 }

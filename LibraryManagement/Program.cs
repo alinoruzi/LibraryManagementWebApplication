@@ -1,3 +1,6 @@
+using LibraryManagement.Services;
+using LibraryManagement.Services.Implemented;
+
 namespace LibraryManagement
 {
     public class Program
@@ -8,6 +11,9 @@ namespace LibraryManagement
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<IMemberService, MemberService>();
+            builder.Services.AddScoped<IBorrowService, BorrowService>();
 
             var app = builder.Build();
 

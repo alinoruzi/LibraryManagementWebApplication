@@ -16,7 +16,7 @@ namespace LibraryManagement.DAL
                 Title= "اثر مرکب",
                 Description= "این کتاب مشهور دستورالعمل‌ لازم برای موفقیت و دستیابی به اهداف و آرزو‌ها را ارائه می‌کند. ",
                 Author= "دارن هاردی",
-                Ganre = Models.Enums.Ganre.scientific,
+                Ganre = 1,
                 BorrowDateTime=null,
                 Borrower=null,
             });
@@ -24,12 +24,21 @@ namespace LibraryManagement.DAL
             {
                 Id = 2,
                 Title = "کتاب صبح روز هفتم",
-                Description = "مورچه‌های بال‌دار از حاشیه‌ی تصویر زن می‌گریزند. زن با سایه‌ی كوچكش، بی‌آن‌كه هیچ طرحی از چهره‌اش پیدا باشد، هم‌چنان در متن خاكستری کتاب ایستاده ‌است.",
+                Description = "مورچه‌های بال‌دار از حاشیه‌ی تصویر او می‌گریزند. او با سایه‌ی كوچكش، بی‌آن‌كه هیچ طرحی از چهره‌اش پیدا باشد، هم‌چنان در متن خاكستری کتاب ایستاده ‌است.",
                 Author = "محمود ساطع",
-                Ganre = Models.Enums.Ganre.romance,
-                BorrowDateTime = null,
-                Borrower = null,
+                Ganre = 4,
+                BorrowDateTime = DateTime.Parse("14/12/2022"),
+                Borrower = MemberRepository.Members.FirstOrDefault(x => x.Id == 1),
             });
+        }
+
+        public static int GenerateId()
+        {
+            if (Books.Count == 0)
+            {
+                return 1;
+            }
+            else return Books.Last().Id+1;
         }
     }
 
