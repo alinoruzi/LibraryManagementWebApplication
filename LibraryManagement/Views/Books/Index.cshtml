@@ -1,4 +1,4 @@
-﻿@model List<Book>
+﻿@model BookListModel
 @{
     ViewData["Title"] = "فهرست کتاب ها";
 }
@@ -21,25 +21,29 @@
                     <th>#</th>
                     <th>عنوان</th>
                     <th>توضیحات</th>
+                    <th>ژانر</th>
                     <th>نویسنده</th>
                     <th>امانت</th>
                     <th>عملیات</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach(var item in Model)
+                @foreach(var item in Model.Books)
                 {
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Title</td>
                     <td>@item.Description</td>
+                    <td>
+                        @(Model.Ganres.FirstOrDefault(x=>x.Id==item.Ganre).Name)
+                    </td>
                     <td>@item.Author</td>
                     <td>
                         @if (item.Borrower is null)
                         {
                             <div>
                                  <a asp-controller="Borrow" asp-action="Index" asp-route-bookId="@item.Id">
-                                     <button class="btn btn-success btn-sm"><i class="fa-solid fa-check"></i> ثبت امانت</button>
+                                     <button class="btn btn-success btn-sm"><i class="fa-solid fa-check"></i> ثبت_امانت</button>
                                  </a>
                             </div>     
                         }

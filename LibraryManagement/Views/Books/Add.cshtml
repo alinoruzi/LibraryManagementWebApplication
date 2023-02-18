@@ -3,22 +3,24 @@
     ViewData["Title"] = "افزودن کتاب";
 }
 
-<div class="mt-5 col-8">
+<div class="mt-5 col-sm-12 col-lg-8 ps-lg-5">
     <form asp-controller="Books" asp-action="Add" method="post">
         <div class="row mb-3 mt-3">
             <div class="col-6">
                 <lable class="form-label" for="title">عنوان کتاب:</lable>
-                <input type="text" class="form-control" name="title" required maxlength="40"/>    
+                <input type="text" class="form-control" name="title" required maxlength="40"/> 
+                <div class="form-text">حداکثر 40 کاراکتر مجاز است</div>
             </div>
             <div class="col-6">
                 <lable class="form-label" for="author">نویسنده کتاب:</lable>
                 <input type="text" class="form-control" name="author" required maxlength="50"/>    
+                <div class="form-text">حداکثر 50 کاراکتر مجاز است</div>
             </div>
         </div>
 
         <div class="row mb-3 mt-3">
             <div class="col-12">
-                <lable class="form-label" for="memberId">امانت گیرنده:</lable>
+                <lable class="form-label" for="memberId">ژانر کتاب:</lable>
                 <select name="ganre" class="form-select" required>
                         @foreach (var item in Model)
                         {
@@ -28,7 +30,8 @@
             </div>
             <div class="col-12 mt-2">
                 <lable class="form-label" for="memberId">توضیحات:</lable>
-                <textarea name="description" class="form-control"></textarea>
+                <textarea name="description" class="form-control" maxlength="350"></textarea>
+                <div class="form-text">حداکثر 350 کاراکتر مجاز است</div>
             </div> 
 
         </div>
@@ -36,7 +39,6 @@
         <div class="mb-3 mt-5">
             <div class="d-grid gap-2">
                 <input type="submit" class="btn btn-lg btn-dark" value="افزودن کتاب" />
-                <input type="button" class="btn btn-lg btn-danger" asp-action="Index" asp-controller="Books" value="بازگشت" />
             </div>
         </div>
     </form>

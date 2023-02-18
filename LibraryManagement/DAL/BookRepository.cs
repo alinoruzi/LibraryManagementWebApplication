@@ -30,15 +30,16 @@ namespace LibraryManagement.DAL
                 BorrowDateTime = DateTime.Parse("14/12/2022"),
                 Borrower = MemberRepository.Members.FirstOrDefault(x => x.Id == 1),
             });
-        }
-
-        public static int GenerateId()
-        {
-            if (Books.Count == 0)
+            Books.Add(new Book()
             {
-                return 1;
-            }
-            else return Books.Last().Id+1;
+                Id = 3,
+                Title = "سیستم های عامل",
+                Description = "این کتاب مرجعی مناسب جهت سیستم های عامل در هشت فصل و 600 صفحه می باشد.",
+                Author = "تننباوم",
+                Ganre = 5,
+                BorrowDateTime = null,
+                Borrower = null,
+            });
         }
     }
 

@@ -14,7 +14,10 @@ namespace LibraryManagement.Controllers
         }
         public IActionResult Index()
         {
-            return View(BookRepository.Books);
+            BookListModel bookListModel = new BookListModel();
+            bookListModel.Books = BookRepository.Books;
+            bookListModel.Ganres = GanreRepository.Ganres;
+            return View(bookListModel);
         }
 
         [HttpGet]
@@ -45,7 +48,7 @@ namespace LibraryManagement.Controllers
         public IActionResult Add(string title, string author, int ganre, string description)
         {
             Book book = new Book();
-            book.Id = BookRepository.GenerateId();
+            book.Id = _bookService.GenerateId();
             book.Title = title;
             book.Author = author;
             book.Description = description;
@@ -72,8 +75,10 @@ namespace LibraryManagement.Controllers
         [HttpPost]
         public IActionResult Edit(int id, string title, string author, int ganre, string description)
         {
-            _bookService.Update(id, title, author, ganre, description);
+            if (_bookService.GetBookBy(id) != null)
+                _bookService.Update(id, title, author, ganre, description);
             return RedirectToAction("Index");
         }
+
     }
 }

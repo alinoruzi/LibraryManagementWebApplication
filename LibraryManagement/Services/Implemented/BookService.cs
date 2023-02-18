@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.DAL;
 using LibraryManagement.Models;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LibraryManagement.Services.Implemented
 {
@@ -26,5 +27,25 @@ namespace LibraryManagement.Services.Implemented
             selected.Author = author;
             selected.Ganre = ganre;
         }
+
+        public int GenerateId()
+        {
+            if (BookRepository.Books.Count == 0)
+            {
+                return 1;
+            }
+            else return BookRepository.Books.Last().Id + 1;
+        }
+
+        public DateTime? GetLastBorrowing()
+        {
+            if (BookRepository.Books.Any(x=>x.BorrowDateTime!=null))
+            {
+                return BookRepository.Books.Max(x => x.BorrowDateTime);
+            }
+            return null;
+        }
+
+        public int GetCountOfBorrowed() => BookRepository.Books.Count(x => x.Borrower != null);
     }
 }

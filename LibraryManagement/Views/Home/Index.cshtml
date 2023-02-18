@@ -20,8 +20,8 @@
     <h5 class="card-title">@Model.CountOfBorrowedBook</h5>
     <h6 class="card-subtitle mb-2 text-muted">کتاب</h6>
     <p class="card-text">تعداد کتب در امانت <span class="badge bg-success">آخرین ثبت امانت: @Model.LastBorrowing</span></p>
-    <a href="#" class="card-link">ثبت امانت</a>
-    <a href="#" class="card-link">بازگشت امانت</a>
+    <a asp-controller="Books" asp-action="Index" class="card-link">ثبت امانت</a>
+    <a asp-controller="Books" asp-action="Borrowed" class="card-link">بازگشت امانت</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">

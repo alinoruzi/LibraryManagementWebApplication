@@ -1,0 +1,50 @@
+﻿@model EditBookModel
+@{
+    ViewData["Title"] = "ویرایش کتاب";
+}
+
+<div class="mt-5 col-sm-12 col-lg-8 ps-lg-5">
+    <div class="flex-row">
+        <h3>شما درحال ویرایش کتاب "@Model.Book.Title" می باشید.</h3>
+        <span class="badge bg-success">وضعیت فعلی امانت کتاب: "@(Model.Book.Borrower is null ? "موجود در مخزن" : "در امانت")" میباشد</span>
+    </div>
+    <form asp-controller="Books" asp-action="Edit" method="post">
+        <div class="row mb-3 mt-3">
+            <div class="col-6">
+                <lable class="form-label" for="id">شناسه کتاب:</lable>
+                <input type="number" class="form-control" name="id" readonly value="@Model.Book.Id"/>    
+            </div>
+            <div class="col-6">
+                <lable class="form-label" for="title">عنوان کتاب:</lable>
+                <input type="text" class="form-control" name="title" required maxlength="40" value="@Model.Book.Title"/>    
+            </div>
+        </div>
+
+        <div class="row mb-3 mt-3">
+            <div class="col-6">
+                <lable class="form-label" for="author">نویسنده کتاب:</lable>
+                <input type="text" class="form-control" name="author" required maxlength="50" value="@Model.Book.Author"/>    
+            </div>
+            <div class="col-6">
+                <lable class="form-label" for="memberId">ژانر کتاب:</lable>
+                <select name="ganre" class="form-select" required>
+                    @foreach (var item in Model.Ganres)
+                    {
+                                <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12 mt-2">
+                <lable class="form-label" for="memberId">توضیحات:</lable>
+                <textarea name="description" class="form-control" maxlength="350">@Model.Book.Description</textarea>
+            </div> 
+
+        </div>
+
+        <div class="mb-3 mt-5">
+            <div class="d-grid gap-2">
+                <input type="submit" class="btn btn-lg btn-dark" value="ویرایش کتاب" />
+            </div>
+        </div>
+    </form>
+</div>

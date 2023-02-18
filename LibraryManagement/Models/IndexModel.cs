@@ -6,6 +6,6 @@
         public int CountOfMembers { get; set; }
         public int CountOfBorrowedBook { get; set; }
         public int CountOfBorrowed { get; set; }
-        public DateTime? LastBorrowing { get; set; }
+        public string LastBorrowing { get; set; }
     }
 }

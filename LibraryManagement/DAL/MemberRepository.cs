@@ -31,14 +31,5 @@ namespace LibraryManagement.DAL
                 RegistrationDateTime = DateTime.Now,
             });
         }
-
-        public static int GenerateId()
-        {
-            if (Members.Count == 0)
-            {
-                return 1;
-            }
-            else return Members.Last().Id + 1;
-        }
     }
 }

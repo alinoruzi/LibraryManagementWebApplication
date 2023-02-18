@@ -34,15 +34,12 @@ namespace LibraryManagement.DAL
                 Name = "رمان",
                 Description = "ژانر ویژه کتب رمان",
             });
-        }
-
-        public static int GenerateId()
-        {
-            if (Ganres.Count == 0)
+            Ganres.Add(new Ganre()
             {
-                return 1;
-            }
-            else return Ganres.Last().Id + 1;
+                Id = 5,
+                Name = "آموزشی",
+                Description = "ژانر ویژه کتب آموزشی",
+            });
         }
     }
 }

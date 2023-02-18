@@ -3,9 +3,9 @@
     ViewData["Title"] = "ثبت امانت";
 }
 
-<div class="mt-5 col-5">
+<div class="mt-5 col-sm-12 col-lg-8 ps-lg-5">
     <div class="flex-row">
-        <p>شما درحال درخواست ثبت امانت برای کتاب "@Model.Book.Title" می باشید.</p>
+        <h3>شما درحال درخواست ثبت امانت برای کتاب "@Model.Book.Title" می باشید.</h3>
         <span class="badge bg-success">وضعیت فعلی امانت کتاب: "@(Model.Book.Borrower is null ? "موجود در مخزن" : "در امانت")" میباشد</span>
     </div>
     
@@ -28,7 +28,6 @@
         <div class="mb-3 mt-5">
             <div class="d-grid gap-2">
                 <input type="submit" class="btn btn-lg btn-dark" value="ثبت امانت" />
-                <input type="button" class="btn btn-lg btn-danger" asp-action="Index" asp-controller="Books" value="بازگشت" />
             </div>
         </div>
     </form>
