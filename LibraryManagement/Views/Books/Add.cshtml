@@ -7,7 +7,7 @@
     <form asp-controller="Books" asp-action="Add" method="post">
         <div class="row mb-3 mt-3">
             <div class="col-6">
-                <lable class="form-label" for="title">عنوان کتاب:</lable>
+                <lable class="form-label" for="title" asp-lac>عنوان کتاب: </lable>
                 <input type="text" class="form-control" name="title" required maxlength="40"/> 
                 <div class="form-text">حداکثر 40 کاراکتر مجاز است</div>
             </div>
